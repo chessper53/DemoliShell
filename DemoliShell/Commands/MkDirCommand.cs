@@ -7,7 +7,7 @@ using DemoliShell.Interfaces;
 
 namespace DemoliShell.Commands
 {
-    internal class MkDirCommand : ICommand
+    public class MkDirCommand : ICommand
     {
         public List<string> Parameters { get; set; }
 
