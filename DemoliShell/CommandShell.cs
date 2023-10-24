@@ -9,6 +9,7 @@ namespace DemoliShell
     internal class CommandShell
     {
         private string currentDir;
+
         private CommandParser commandParser;
 
         public void Run()
