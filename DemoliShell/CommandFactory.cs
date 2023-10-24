@@ -11,7 +11,7 @@ namespace DemoliShell
     {
         static List<string> commands;
 
-        public ICommand CreateCommand(ICommand command)
+        static ICommand CreateCommand(ICommand command)
         {
             return null;
         }
