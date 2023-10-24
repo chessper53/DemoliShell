@@ -11,6 +11,7 @@ namespace DemoliShell.Commands
     {
         public void Execute()
         {
+            Console.Clear();
             throw new NotImplementedException();
         }
     }
