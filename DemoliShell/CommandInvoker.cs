@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DemoliShell.Commands;
 using DemoliShell.Interfaces;
 
 namespace DemoliShell
@@ -11,7 +12,15 @@ namespace DemoliShell
     {
         public void ExecuteCommand(Type type, List<string> parameters)
         {
-            
+            try
+            {
+                ICommand command = CommandFactory.CreateCommand(type);
+                command.Execute();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

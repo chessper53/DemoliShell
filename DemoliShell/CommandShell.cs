@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -13,14 +14,21 @@ namespace DemoliShell
         private string currentDir;
 
         private CommandParser commandParser;
+        private CommandInvoker commandInvoker;
+
+        public CommandShell()
+        {
+            commandParser = new CommandParser();
+            commandInvoker = new CommandInvoker();
+        }
 
         public void Run()
         {
             do
             {
                 showInterface();
-                // Den Pfad zum neuen Arbeitsverzeichnis abrufen
-                string path = Console.ReadLine();
+                string userInput = Console.ReadLine();
+                ProcessInput(userInput);
             } while (true);
 
         }
@@ -32,9 +40,20 @@ namespace DemoliShell
         {
             System.Environment.Exit(0);
         }
-        public void ProcessInput()
+        public void ProcessInput(string userInput)
         {
+            Type type = commandParser.GetCommand(userInput);
+            List<string> parameters = commandParser.GetParameter(userInput);
 
+            if(type != null)
+            {
+                Console.WriteLine(type.Name);
+                commandInvoker.ExecuteCommand(type, parameters);
+            }
+            else
+            {
+                Console.WriteLine("FRESSSS");
+            }
         }   
     }
 }
