@@ -10,10 +10,12 @@ namespace DemoliShell.Commands
 {
     internal class CdCommand : ICommand
     {
+        public List<string> Parameters { get; set; }
+
         public void Execute()
         {
             // Den Pfad zum neuen Arbeitsverzeichnis abrufen
-            string path = Console.ReadLine();
+            string path = Parameters[0];
 
             // Das aktuelle Arbeitsverzeichnis ändern
             Directory.SetCurrentDirectory(path);

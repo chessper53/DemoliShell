@@ -9,6 +9,8 @@ namespace DemoliShell.Commands
 {
     internal class ClsCommand : ICommand
     {
+        public List<string> Parameters { get; set; }
+
         public void Execute()
         {
             Console.Clear();

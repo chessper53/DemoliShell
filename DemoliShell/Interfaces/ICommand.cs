@@ -8,6 +8,8 @@ namespace DemoliShell.Interfaces
 {
     internal interface ICommand
     {
+        public List<string> Parameters { get; set; }
+
         void Execute();
     }
 }
