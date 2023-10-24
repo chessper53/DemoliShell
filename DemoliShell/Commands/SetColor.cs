@@ -11,6 +11,13 @@ namespace DemoliShell.Commands
     {
         public void Execute()
         {
+
+            string colorName = Console.ReadLine();
+            ConsoleColor c;
+            if (Enum.TryParse(colorName, out c)) ;
+            Console.ForegroundColor = c;
+
+
             throw new NotImplementedException();
         }
     }
