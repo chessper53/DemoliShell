@@ -14,6 +14,16 @@ namespace DemoliShell
 
         public void Run()
         {
+            do
+            {
+                showInterface();
+                // Den Pfad zum neuen Arbeitsverzeichnis abrufen
+                string path = Console.ReadLine();
+            } while (true);
+
+        }
+        public void showInterface()
+        {
 
         }
         public void Exit()
