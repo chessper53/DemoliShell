@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemoliShell
+namespace DemoliShell.Interfaces
 {
-    internal class Shell
+    internal interface ICommand
     {
+        void Execute();
     }
 }

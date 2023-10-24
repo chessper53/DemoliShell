@@ -8,5 +8,14 @@ namespace DemoliShell
 {
     internal class CommandParser
     {
+        private List<string> commands;
+
+        public Type GetCommand(string input) {
+            return null;
+        }
+
+        public List<string> GetParameter(string input) {
+            return null;
+        }
     }
 }
