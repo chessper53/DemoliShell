@@ -15,6 +15,8 @@ namespace DemoliShell
             try
             {
                 ICommand command = CommandFactory.CreateCommand(type);
+                command.Parameters = parameters;
+
                 command.Execute();
             }
             catch (Exception ex)

@@ -47,12 +47,11 @@ namespace DemoliShell
 
             if(type != null)
             {
-                Console.WriteLine(type.Name);
                 commandInvoker.ExecuteCommand(type, parameters);
             }
             else
             {
-                Console.WriteLine("FRESSSS");
+                Console.WriteLine("Input not valid");
             }
         }   
     }

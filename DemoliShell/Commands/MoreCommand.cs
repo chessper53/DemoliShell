@@ -9,6 +9,8 @@ namespace DemoliShell.Commands
 {
     internal class MoreCommand : ICommand
     {
+        public List<string> Parameters { get; set; }
+
         public void Execute()
         {
             throw new NotImplementedException();

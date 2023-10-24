@@ -40,6 +40,14 @@ namespace DemoliShell
         }
 
         public List<string> GetParameter(string input) {
+            List<string> parameters = input.Split(' ').ToList<string>(); ;
+            parameters.RemoveAt(0);
+
+            if(parameters.Count > 0)
+            {
+                return parameters;
+            }
+
             return null;
         }
     }
