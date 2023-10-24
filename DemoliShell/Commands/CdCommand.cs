@@ -20,9 +20,6 @@ namespace DemoliShell.Commands
 
             // Das neue aktuelle Arbeitsverzeichnis ausgeben
             Console.WriteLine(Directory.GetCurrentDirectory());
-
-            throw new NotImplementedException();
-
         }
     }
 }
