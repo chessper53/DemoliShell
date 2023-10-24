@@ -7,17 +7,22 @@ using DemoliShell.Interfaces;
 
 namespace DemoliShell.Commands
 {
-    internal class SetColorCommand : ICommand
+    public class SetColorCommand : ICommand
     {
         public List<string> Parameters { get; set; }
 
         public void Execute()
         {
-            Console.WriteLine(Parameters[0]);
             string colorName = Parameters[0];
+            colorName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(colorName.ToLower());
             ConsoleColor c;
-            if (Enum.TryParse(colorName, out c)) ;
-            Console.ForegroundColor = c;
+            if (Enum.TryParse(colorName, out c)) 
+            { 
+                Console.ForegroundColor = c;
+            } 
+            else {
+                Console.WriteLine("Color does not Exist, please try again.");
+            }
         }
     }
 }
