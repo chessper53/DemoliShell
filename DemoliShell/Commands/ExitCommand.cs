@@ -9,6 +9,11 @@ namespace DemoliShell.Commands
 {
     internal class ExitCommand : ICommand
     {
+        public void Execute(string[] parameter)
+        {
+            Environment.Exit(0);
+        }
+
         public void Execute()
         {
             throw new NotImplementedException();
