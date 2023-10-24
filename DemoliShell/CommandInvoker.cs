@@ -9,7 +9,7 @@ namespace DemoliShell
 {
     internal class CommandInvoker
     {
-        public void ExecuteCommand(ICommand command, List<string> parameters)
+        public void ExecuteCommand(Type type, List<string> parameters)
         {
             
         }
