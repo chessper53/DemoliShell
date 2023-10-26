@@ -49,7 +49,8 @@ namespace DemoliShell
             }
             else
             {
-                Console.WriteLine("Input not valid");
+                Console.WriteLine("Unkown command, type `Help` for a list of all commands!");
+                Console.WriteLine("");
             }
         }   
     }
