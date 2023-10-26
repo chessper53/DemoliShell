@@ -1,5 +1,4 @@
 # DemoliShell
-Our goal is simple:
 > ### **Shattering Boundaries, Revolutionizing Consoles! Experience the Power, Embrace the Change**
 
 ## Explore our Cutting-edge Commands:
