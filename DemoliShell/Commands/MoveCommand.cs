@@ -10,17 +10,21 @@ namespace DemoliShell.Commands
 {
     public class MoveCommand : ICommand
     {
-        public List<string> Parameters { get; set; }
+            public List<string> Parameters { get; set; }
 
-        public void Execute()
-        {
-            // Den Pfad des SourceOrdners abrufen
-            string sourcePath = Parameters[0];
+            public void Execute()
+            {
+                if (Parameters != null && Parameters.Count > 0)
+                {
+                    //Get path of source directory
+                    string sourcePath = Parameters[0];
 
-            //Den Pfad des DestinationPath abrufen
-            string destinationPath = Parameters[1];
+                    //Get path of destination directory
+                    string destinationPath = Parameters[1];
 
-            Directory.Move(sourcePath, destinationPath);
+                    Directory.Move(sourcePath, destinationPath);
+                }
+                else { Console.WriteLine("Parameters are null or empty."); }
+            }
         }
     }
-}
