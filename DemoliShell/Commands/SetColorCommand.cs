@@ -13,16 +13,21 @@ namespace DemoliShell.Commands
 
         public void Execute()
         {
-            string colorName = Parameters[0];
-            colorName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(colorName.ToLower());
-            ConsoleColor c;
-            if (Enum.TryParse(colorName, out c)) 
-            { 
-                Console.ForegroundColor = c;
-            } 
-            else {
-                Console.WriteLine("Color does not Exist, please try again.");
+            if (Parameters != null && Parameters.Count > 0)
+            {
+                string colorName = Parameters[0];
+                colorName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(colorName.ToLower());
+                ConsoleColor c;
+                if (Enum.TryParse(colorName, out c))
+                {
+                    Console.ForegroundColor = c;
+                }
+                else
+                {
+                    Console.WriteLine("Color does not Exist, please try again.");
+                }
             }
+            else {Console.WriteLine("Parameters are null or empty.");}
         }
     }
 }

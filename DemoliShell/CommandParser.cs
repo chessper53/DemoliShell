@@ -26,9 +26,7 @@ namespace DemoliShell
                 else
                 {
                     commandInUserInput = input;
-                }
-
-                //Console.WriteLine($"{type.Name}||{commandInUserInput}");
+                }   
 
                 if (type.Name.ToLower() == commandInUserInput.ToLower()+"command")
                 {

@@ -14,14 +14,12 @@ namespace DemoliShell.Commands
 
         public void Execute()
         {
-            // Den Pfad zum neuen Arbeitsverzeichnis abrufen
-            string path = Parameters[0];
-
-            // Das aktuelle Arbeitsverzeichnis ändern
-            Directory.SetCurrentDirectory(path);
-
-            // Das neue aktuelle Arbeitsverzeichnis ausgeben
-            Console.WriteLine(Directory.GetCurrentDirectory());
+            if (Parameters != null && Parameters.Count > 0)
+            {
+                string path = Parameters[0];
+                Directory.SetCurrentDirectory(path);
+            }
+            else { Console.WriteLine("Parameters are null or empty."); }
         }
     }
 }
