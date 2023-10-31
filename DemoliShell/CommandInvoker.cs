@@ -19,7 +19,7 @@ namespace DemoliShell
                 command.Execute();
             }
             catch (Exception ex)
-            {
+            {   
                 Console.WriteLine(ex.Message);
             }
         }

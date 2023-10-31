@@ -9,6 +9,13 @@ namespace DemoliShell.Filesystem
     internal class Directory : FilesystemItem
     {
         public List<FilesystemItem> FilesystemItems { get; set; }
-        public Directory() { }
+
+        public Directory(List<FilesystemItem> fileSystemItems, string name, DateTime createdOn)
+        {
+            FilesystemItems = fileSystemItems;
+            Name = name;
+            CreatedOn = createdOn;
+        }
+
     }
 }
