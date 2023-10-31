@@ -14,7 +14,7 @@ namespace UnitTestsShell
         {
             // Arrange
             SetColorCommand command = new SetColorCommand(new TestCommandOutputWriter());
-            command.Parameters = new List<string>
+            command.CommandContext.Parameters = new List<string>
             {
                 "green"
             };
@@ -24,7 +24,7 @@ namespace UnitTestsShell
             command.Execute();
 
             // Assert
-            Assert.AreEqual(expected, command.OutputWriter.ForegroundColor);
+            Assert.AreEqual(expected, command.CommandContext.OutputWriter.ForegroundColor);
         }
     }
 }

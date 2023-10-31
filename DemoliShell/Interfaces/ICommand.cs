@@ -8,8 +8,7 @@ namespace DemoliShell.Interfaces
 {
     internal interface ICommand
     {
-        public ICommandOutputWriter OutputWriter { get; set; }
-        public List<string> Parameters { get; set; }
+        public CommandContext CommandContext { get; set; }
 
         void Execute();
     }
