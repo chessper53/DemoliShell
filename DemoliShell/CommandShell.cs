@@ -7,6 +7,7 @@ using System.Text;
 using DemoliShell.Filesystem;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
+using DemoliShell.Persistency;
 
 namespace DemoliShell
 {
@@ -21,6 +22,11 @@ namespace DemoliShell
             commandParser = new CommandParser();
             commandInvoker = new CommandInvoker();
             shellWorkspace = new ShellWorkspace();
+
+
+            Drive drive = PersistencyService.Load();
+            PersistencyService.Save(drive);
+
         }
 
         public void Run()

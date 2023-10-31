@@ -15,5 +15,14 @@ namespace DemoliShell.Filesystem
         {
             ParentDirectory = parentDirectory;
         }
+        public List<FilesystemItem> FilesystemItems { get; set; }
+
+        public Directory(List<FilesystemItem> fileSystemItems, string name, DateTime createdOn)
+        {
+            FilesystemItems = fileSystemItems;
+            Name = name;
+            CreatedOn = createdOn;
+        }
+
     }
 }
