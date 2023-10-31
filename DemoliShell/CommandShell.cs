@@ -22,15 +22,11 @@ namespace DemoliShell
             commandParser = new CommandParser();
             commandInvoker = new CommandInvoker();
             shellWorkspace = new ShellWorkspace();
-
-
-            Drive drive = PersistencyService.Load();
-            PersistencyService.Save(drive);
-
         }
 
         public void Run()
         {
+
             do
             {
                 showInterface();
@@ -41,6 +37,8 @@ namespace DemoliShell
         }
         public void showInterface()
         {
+            Console.Write(shellWorkspace.GetFullPath() + " > "); ;
+
             Console.Write(System.IO.Directory.GetCurrentDirectory() + " > ");
         }
         public void Exit()
@@ -54,7 +52,7 @@ namespace DemoliShell
 
             if(type != null)
             {
-                commandInvoker.ExecuteCommand(type, parameters);
+                commandInvoker.ExecuteCommand(type, parameters, shellWorkspace);
             }
             else
             {

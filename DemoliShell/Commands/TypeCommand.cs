@@ -24,7 +24,8 @@ namespace DemoliShell.Commands
 
         public void Execute()
         {
-            throw new NotImplementedException();
+            //CommandContext.OutputWriter.WriteLine(CommandContext.ShellWorkspace.GetFullPath());
+            //throw new NotImplementedException();
         }
     }
 }
