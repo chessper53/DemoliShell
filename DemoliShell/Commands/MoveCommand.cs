@@ -14,6 +14,15 @@ namespace DemoliShell.Commands
 
         public ICommandOutputWriter OutputWriter { get; set; }
 
+        //Constructor
+        public MoveCommand()
+        {
+            OutputWriter = new CommandOutputWriter();
+        }
+        public ^MoveCommand(ICommandOutputWriter commandOutputWriter)
+        {
+            OutputWriter = commandOutputWriter;
+        }
 
 
 

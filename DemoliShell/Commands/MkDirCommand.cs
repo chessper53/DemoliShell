@@ -12,6 +12,15 @@ namespace DemoliShell.Commands
         public List<string> Parameters { get; set; }
         public ICommandOutputWriter OutputWriter { get; set; }
 
+        //Constructor
+        public MkDirCommand()
+        {
+            OutputWriter = new CommandOutputWriter();
+        }
+        public MkDirCommand(ICommandOutputWriter commandOutputWriter)
+        {
+            OutputWriter = commandOutputWriter;
+        }
 
 
         public void Execute()

@@ -15,6 +15,15 @@ namespace DemoliShell.Commands
         public List<string> Parameters { get; set; }
         public ICommandOutputWriter OutputWriter { get; set; }
 
+        //Constructor
+        public VerCommand()
+        {
+            OutputWriter = new CommandOutputWriter();
+        }
+        public VerCommand(ICommandOutputWriter commandOutputWriter)
+        {
+            OutputWriter = commandOutputWriter;
+        }
 
 
         public void Execute()

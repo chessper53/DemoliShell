@@ -13,6 +13,15 @@ namespace DemoliShell.Commands
         public List<string> Parameters { get; set; }
         public ICommandOutputWriter OutputWriter { get; set; }
 
+        //Constructor
+        public CdCommand()
+        {
+            OutputWriter = new CommandOutputWriter();
+        }
+        public CdCommand(ICommandOutputWriter commandOutputWriter)
+        {
+            OutputWriter = commandOutputWriter;
+        }
 
 
         public void Execute()
