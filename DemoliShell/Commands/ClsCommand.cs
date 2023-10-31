@@ -15,17 +15,17 @@ namespace DemoliShell.Commands
         //Constructor
         public ClsCommand()
         {
-            OutputWriter = new CommandOutputWriter();
+            CommandContext.OutputWriter = new CommandOutputWriter();
         }
         public ClsCommand(ICommandOutputWriter commandOutputWriter)
         {
-            OutputWriter = commandOutputWriter;
+            CommandContext.OutputWriter = commandOutputWriter;
         }
 
 
         public void Execute()
         {
-            OutputWriter.Clear();
+            CommandContext.OutputWriter.Clear();
         }
     }
 }

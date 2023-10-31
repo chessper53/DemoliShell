@@ -15,11 +15,11 @@ namespace DemoliShell.Commands
         //Constructor
         public MoveCommand()
         {
-            OutputWriter = new CommandOutputWriter();
+            CommandContext.OutputWriter = new CommandOutputWriter();
         }
-        public ^MoveCommand(ICommandOutputWriter commandOutputWriter)
+        public MoveCommand(ICommandOutputWriter commandOutputWriter)
         {
-            OutputWriter = commandOutputWriter;
+            CommandContext.OutputWriter = commandOutputWriter;
         }
 
 
@@ -36,7 +36,7 @@ namespace DemoliShell.Commands
 
                     Directory.Move(sourcePath, destinationPath);
                 }
-                else { OutputWriter.WriteLine("Parameters are null or empty."); }
+                else { CommandContext.OutputWriter.WriteLine("Parameters are null or empty."); }
             }
     }
 }

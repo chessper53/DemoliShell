@@ -14,11 +14,11 @@ namespace DemoliShell.Commands
         //Constructor
         public MoreCommand()
         {
-            OutputWriter = new CommandOutputWriter();
+            CommandContext.OutputWriter = new CommandOutputWriter();
         }
         public MoreCommand(ICommandOutputWriter commandOutputWriter)
         {
-            OutputWriter = commandOutputWriter;
+            CommandContext.OutputWriter = commandOutputWriter;
         }
 
 

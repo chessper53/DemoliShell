@@ -14,11 +14,11 @@ namespace DemoliShell.Commands
         //Constructor
         public MkDirCommand()
         {
-            OutputWriter = new CommandOutputWriter();
+            CommandContext.OutputWriter = new CommandOutputWriter();
         }
         public MkDirCommand(ICommandOutputWriter commandOutputWriter)
         {
-            OutputWriter = commandOutputWriter;
+            CommandContext.OutputWriter = commandOutputWriter;
         }
 
 

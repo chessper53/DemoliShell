@@ -17,11 +17,11 @@ namespace DemoliShell.Commands
         //Constructor
         public VerCommand()
         {
-            OutputWriter = new CommandOutputWriter();
+            CommandContext.OutputWriter = new CommandOutputWriter();
         }
         public VerCommand(ICommandOutputWriter commandOutputWriter)
         {
-            OutputWriter = commandOutputWriter;
+            CommandContext.OutputWriter = commandOutputWriter;
         }
 
 
@@ -29,7 +29,7 @@ namespace DemoliShell.Commands
         {
             OperatingSystem os = Environment.OSVersion;
 
-            OutputWriter.WriteLine("OS Version: " + os.Version.ToString());
+            CommandContext.OutputWriter.WriteLine("OS Version: " + os.Version.ToString());
         }
     }
 }

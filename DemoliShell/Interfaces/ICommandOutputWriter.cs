@@ -13,6 +13,6 @@ namespace DemoliShell.Interfaces
         void WriteLine(string text);
         void Clear();
         void SetCurrentDirectory(string path);
-        void Move(string sourcePath, string destinationPath)
+        void Move(string sourcePath, string destinationPath);
     }
 }
