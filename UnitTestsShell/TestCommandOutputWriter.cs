@@ -20,5 +20,20 @@ namespace UnitTestsShell
         {
             
         }
+
+        public void Clear()
+        {
+
+        }
+
+        public void SetCurrentDirectory(string path)
+        {
+
+        }
+
+        public void Move(string sourcePath, string destinationPath)
+        {
+
+        }
     }
 }

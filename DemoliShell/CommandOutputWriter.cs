@@ -22,5 +22,20 @@ namespace DemoliShell
         {
             Console.WriteLine(text);
         }
+
+        public void Clear()
+        {
+            Console.Clear();
+        }
+
+        public void SetCurrentDirectory(string path)
+        {
+            
+        }
+
+        public void Move(string sourcePath, string destinationPath)
+        {
+            Directory.Move(sourcePath, destinationPath);
+        }
     }
 }
