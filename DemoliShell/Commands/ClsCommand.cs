@@ -25,7 +25,7 @@ namespace DemoliShell.Commands
 
         public void Execute()
         {
-            Console.Clear();
+            OutputWriter.Clear();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace DemoliShell.Commands
         {
             OperatingSystem os = Environment.OSVersion;
 
-            Console.WriteLine("OS Version: " + os.Version.ToString());
+            OutputWriter.WriteLine("OS Version: " + os.Version.ToString());
         }
     }
 }

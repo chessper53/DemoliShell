@@ -31,7 +31,7 @@ namespace DemoliShell.Commands
                 string path = Parameters[0];
                 Directory.SetCurrentDirectory(path);
             }
-            else { Console.WriteLine("Parameters are null or empty."); }
+            else { OutputWriter.WriteLine("Parameters are null or empty."); }
         }
     }
 }
