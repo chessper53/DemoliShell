@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DemoliShell.Filesystem
 {
-    internal class Drive
+    public class Drive
     { 
         public Directory RootDirectory { get; set; }
         public string Name { get; set; }

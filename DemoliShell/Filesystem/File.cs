@@ -10,5 +10,9 @@ namespace DemoliShell.Filesystem
     {
         public string FileContent { get; set; }
         public File() { }
+        public File(Directory parentDirectory)
+        {
+            ParentDirectory = parentDirectory;
+        }
     }
 }

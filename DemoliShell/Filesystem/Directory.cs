@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace DemoliShell.Filesystem
 {
-    internal class Directory : FilesystemItem
+    public class Directory : FilesystemItem
     {
-        public List<FilesystemItem> FilesystemItems { get; set; }
+        public List<FilesystemItem> FilesystemItems { get; set; } = new List<FilesystemItem> { };
+
         public Directory() { }
+        public Directory(Directory parentDirectory)
+        {
+            ParentDirectory = parentDirectory;
+        }
     }
 }

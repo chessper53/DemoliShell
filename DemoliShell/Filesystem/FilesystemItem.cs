@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace DemoliShell.Filesystem
 {
-    abstract class FilesystemItem
+    public abstract class FilesystemItem
     {
         public string Name { get; set; }
         public double Size { get; set; }
         public DateTime CreatedOn { get; set; }
+        public Directory ParentDirectory { get; set; }
     }
 }
