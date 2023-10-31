@@ -15,14 +15,18 @@ namespace DemoliShell
     {
         private CommandParser commandParser;
         private CommandInvoker commandInvoker;
+        private ShellWorkspace shellWorkspace;
 
         public CommandShell()
         {
             commandParser = new CommandParser();
             commandInvoker = new CommandInvoker();
+            shellWorkspace = new ShellWorkspace();
+
 
             Drive drive = PersistencyService.Load();
             PersistencyService.Save(drive);
+
         }
 
         public void Run()

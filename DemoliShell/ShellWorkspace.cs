@@ -10,8 +10,14 @@ namespace DemoliShell
 {
     internal class ShellWorkspace
     {
-        private Drive drive;
+        public Drive Drive { get; set; }
         private PersistencyService persistencyService;
-        private string CurrentDirectory {get;set;}
+        public Filesystem.Directory CurrentDirectory {get;set;}
+        public PathHandler PathHandler { get;set;}
+
+        public ShellWorkspace()
+        {
+            PathHandler = new PathHandler();
+        }
     }
 }
