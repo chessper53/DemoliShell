@@ -13,12 +13,19 @@ namespace DemoliShell.Persistency
     internal class PersistencyService
     {
         public const string Filename = "Filesystem.json";
+        public static JsonSerializerSettings settings = new JsonSerializerSettings() { 
+            Formatting = Formatting.Indented,
+            TypeNameHandling = TypeNameHandling.All,
+        };
+
         public PersistencyService() { }
+
+
         public static Drive Load() {
             if (System.IO.File.Exists(Filename))
             {
                 string json = System.IO.File.ReadAllText(Filename);
-                return JsonConvert.DeserializeObject<Drive>(json);
+                return JsonConvert.DeserializeObject<Drive>(json, settings);
             }
             else
             {
@@ -34,7 +41,7 @@ namespace DemoliShell.Persistency
         }
         public static void Save(Drive driver)
         {
-            string json = JsonConvert.SerializeObject(driver, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(driver, settings);
             System.IO.File.WriteAllText(Filename, json);
         }
     }
