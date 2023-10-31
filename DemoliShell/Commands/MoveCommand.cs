@@ -31,5 +31,5 @@ namespace DemoliShell.Commands
                 }
                 else { Console.WriteLine("Parameters are null or empty."); }
             }
-        }
     }
+}
