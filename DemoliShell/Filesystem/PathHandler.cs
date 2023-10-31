@@ -17,9 +17,11 @@ namespace DemoliShell.Filesystem
 
             do
             {
+                fullPath = "\\" + loopDir.Name + fullPath;
+
                 if (loopDir.ParentDirectory != null)
                 {
-                    fullPath = "\\" + loopDir.Name + fullPath;
+
 
                     loopDir = loopDir.ParentDirectory;
                 }

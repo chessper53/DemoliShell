@@ -8,16 +8,21 @@ using System.Threading.Tasks;
 
 namespace DemoliShell
 {
-    internal class ShellWorkspace
+    public class ShellWorkspace
     {
         public Drive Drive { get; set; }
-        private PersistencyService persistencyService;
         public Filesystem.Directory CurrentDirectory {get;set;}
         public PathHandler PathHandler { get;set;}
 
         public ShellWorkspace()
         {
             PathHandler = new PathHandler();
+            Drive = PersistencyService.Load();
+            CurrentDirectory = Drive.RootDirectory;
+        }
+        public string GetFullPath()
+        {
+            return PathHandler.GetFullPath(CurrentDirectory, Drive);
         }
     }
 }

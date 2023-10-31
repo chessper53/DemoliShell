@@ -10,11 +10,12 @@ namespace DemoliShell
 {
     internal class CommandInvoker
     {
-        public void ExecuteCommand(Type type, List<string> parameters)
+        public void ExecuteCommand(Type type, List<string> parameters, ShellWorkspace shellWorkspace)
         {
             try
             {
                 ICommand command = CommandFactory.CreateCommand(type);
+                command.CommandContext.ShellWorkspace = shellWorkspace;
                 command.CommandContext.Parameters = parameters;
                 command.Execute();
             }
