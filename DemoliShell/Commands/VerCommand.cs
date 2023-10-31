@@ -14,12 +14,22 @@ namespace DemoliShell.Commands
     {
         public CommandContext CommandContext { get; set; } = new CommandContext();
 
+        //Constructor
+        public VerCommand()
+        {
+            OutputWriter = new CommandOutputWriter();
+        }
+        public VerCommand(ICommandOutputWriter commandOutputWriter)
+        {
+            OutputWriter = commandOutputWriter;
+        }
+
 
         public void Execute()
         {
             OperatingSystem os = Environment.OSVersion;
 
-            Console.WriteLine("OS Version: " + os.Version.ToString());
+            OutputWriter.WriteLine("OS Version: " + os.Version.ToString());
         }
     }
 }

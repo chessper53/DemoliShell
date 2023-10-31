@@ -11,6 +11,16 @@ namespace DemoliShell.Commands
     {
         public CommandContext CommandContext { get; set; } = new CommandContext();
 
+        //Constructor
+        public RenCommand()
+        {
+            OutputWriter = new CommandOutputWriter();
+        }
+        public RenCommand(ICommandOutputWriter commandOutputWriter)
+        {
+            OutputWriter = commandOutputWriter;
+        }
+
 
         public void Execute()
         {
