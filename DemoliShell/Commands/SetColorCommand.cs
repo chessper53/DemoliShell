@@ -10,36 +10,35 @@ namespace DemoliShell.Commands
 {
     public class SetColorCommand : ICommand
     {
-        public List<string> Parameters { get; set; }
-        public ICommandOutputWriter OutputWriter { get; set; }
+        public CommandContext CommandContext { get; set; } = new CommandContext();
 
 
         public SetColorCommand()
         {
-            OutputWriter = new CommandOutputWriter();
+            CommandContext.OutputWriter = new CommandOutputWriter();
         }
         public SetColorCommand(ICommandOutputWriter commandOutputWriter)
         {
-            OutputWriter = commandOutputWriter;
+            CommandContext.OutputWriter = commandOutputWriter;
         }
 
         public void Execute()
         {
-            if (Parameters != null && Parameters.Count > 0)
+            if (CommandContext.Parameters != null && CommandContext.Parameters.Count > 0)
             {
-                string colorName = Parameters[0];
+                string colorName = CommandContext.Parameters[0];
                 colorName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(colorName.ToLower());
                 ConsoleColor c;
                 if (Enum.TryParse(colorName, out c))
                 {
-                    OutputWriter.ForegroundColor = c;
+                    CommandContext.OutputWriter.ForegroundColor = c;
                 }
                 else
                 {
-                    OutputWriter.WriteLine("Color does not Exist, please try again.");
+                    CommandContext.OutputWriter.WriteLine("Color does not Exist, please try again.");
                 }
             }
-            else { OutputWriter.WriteLine("Parameters are null or empty.");}
+            else { CommandContext.OutputWriter.WriteLine("Parameters are null or empty.");}
         }
     }
 }

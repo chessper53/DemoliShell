@@ -9,8 +9,7 @@ namespace DemoliShell.Commands
 {
     public class MkDirCommand : ICommand
     {
-        public List<string> Parameters { get; set; }
-        public ICommandOutputWriter OutputWriter { get; set; }
+        public CommandContext CommandContext { get; set; } = new CommandContext();
 
         //Constructor
         public MkDirCommand()

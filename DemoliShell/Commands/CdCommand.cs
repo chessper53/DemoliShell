@@ -10,8 +10,8 @@ namespace DemoliShell.Commands
 {
     public class CdCommand : ICommand
     {
-        public List<string> Parameters { get; set; }
-        public ICommandOutputWriter OutputWriter { get; set; }
+        public CommandContext CommandContext { get; set; } = new CommandContext();
+
 
         //Constructor
         public CdCommand()
@@ -26,9 +26,9 @@ namespace DemoliShell.Commands
 
         public void Execute()
         {
-            if (Parameters != null && Parameters.Count > 0)
+            if (CommandContext.Parameters != null && CommandContext.Parameters.Count > 0)
             {
-                string path = Parameters[0];
+                string path = CommandContext.Parameters[0];
                 Directory.SetCurrentDirectory(path);
             }
             else { OutputWriter.WriteLine("Parameters are null or empty."); }
