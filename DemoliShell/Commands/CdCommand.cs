@@ -11,6 +11,9 @@ namespace DemoliShell.Commands
     public class CdCommand : ICommand
     {
         public List<string> Parameters { get; set; }
+        public ICommandOutputWriter OutputWriter { get; set; }
+
+
 
         public void Execute()
         {

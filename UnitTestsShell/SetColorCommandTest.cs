@@ -6,11 +6,6 @@ using Moq;
 
 namespace UnitTestsShell
 {
-    public interface IConsoleWrapper
-    {
-        ConsoleColor ForegroundColor { get; set; }
-    }
-
     [TestClass]
     public class SetColorCommandTest
     {
@@ -18,16 +13,18 @@ namespace UnitTestsShell
         public void SetColorGreen_ExecuteSetColor_ExpectedColor_Green()
         {
             // Arrange
-            var mockConsole = new Mock<IConsoleWrapper>();
-            var setColorCommand = new SetColorCommand();
-            setColorCommand.Parameters = new List<string> { "Green" };
-            mockConsole.SetupProperty(c => c.ForegroundColor);
+            SetColorCommand command = new SetColorCommand(new TestCommandOutputWriter());
+            command.Parameters = new List<string>
+            {
+                "green"
+            };
+            ConsoleColor expected = ConsoleColor.Green;
 
             // Act
-            setColorCommand.Execute();
+            command.Execute();
 
             // Assert
-            mockConsole.VerifySet(c => c.ForegroundColor = ConsoleColor.Green, Times.Once);
+            Assert.AreEqual(expected, command.OutputWriter.ForegroundColor);
         }
     }
 }

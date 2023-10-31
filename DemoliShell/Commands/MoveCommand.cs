@@ -10,9 +10,14 @@ namespace DemoliShell.Commands
 {
     public class MoveCommand : ICommand
     {
-            public List<string> Parameters { get; set; }
+        public List<string> Parameters { get; set; }
 
-            public void Execute()
+        public ICommandOutputWriter OutputWriter { get; set; }
+
+
+
+
+        public void Execute()
             {
                 if (Parameters != null && Parameters.Count > 0)
                 {

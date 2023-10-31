@@ -10,6 +10,9 @@ namespace DemoliShell.Commands
     public class TypeCommand : ICommand
     {
         public List<string> Parameters { get; set; }
+        public ICommandOutputWriter OutputWriter { get; set; }
+
+
 
         public void Execute()
         {
