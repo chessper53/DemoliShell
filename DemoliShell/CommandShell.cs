@@ -33,7 +33,7 @@ namespace DemoliShell
         }
         public void showInterface()
         {
-            Console.Write(Directory.GetCurrentDirectory() + " > ");
+            Console.Write(System.IO.Directory.GetCurrentDirectory() + " > ");
         }
         public void Exit()
         {
