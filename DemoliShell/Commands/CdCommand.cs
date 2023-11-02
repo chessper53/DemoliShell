@@ -29,7 +29,10 @@ namespace DemoliShell.Commands
             if (CommandContext.Parameters != null && CommandContext.Parameters.Count > 0)
             {
                 string path = CommandContext.Parameters[0];
-                Directory.SetCurrentDirectory(path);
+                Filesystem.Directory resultDir = CommandContext.ShellWorkspace.PathHandler.GetDirectory(path, CommandContext.ShellWorkspace.CurrentDirectory, CommandContext.ShellWorkspace.Drive);
+
+                CommandContext.ShellWorkspace.CurrentDirectory = resultDir;
+                CommandContext.OutputWriter.WriteLine(CommandContext.ShellWorkspace.GetFullPath());
             }
             else { CommandContext.OutputWriter.WriteLine("Parameters are null or empty."); }
         }
