@@ -32,7 +32,6 @@ namespace DemoliShell.Commands
                 Filesystem.Directory resultDir = CommandContext.ShellWorkspace.PathHandler.GetDirectory(path, CommandContext.ShellWorkspace.CurrentDirectory, CommandContext.ShellWorkspace.Drive);
 
                 CommandContext.ShellWorkspace.CurrentDirectory = resultDir;
-                CommandContext.OutputWriter.WriteLine(CommandContext.ShellWorkspace.GetFullPath());
             }
             else { CommandContext.OutputWriter.WriteLine("Parameters are null or empty."); }
         }

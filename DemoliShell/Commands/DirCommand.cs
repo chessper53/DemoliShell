@@ -24,7 +24,10 @@ namespace DemoliShell.Commands
 
         public void Execute()
         {
-            throw new NotImplementedException();
+            foreach (Filesystem.Directory item in CommandContext.ShellWorkspace.CurrentDirectory.FilesystemItems)
+            {
+                CommandContext.OutputWriter.WriteLine(item.Name);
+            }
         }
     }
 }

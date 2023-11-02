@@ -57,7 +57,7 @@ namespace DemoliShell
         {
             Console.Write(shellWorkspace.GetFullPath() + " > "); ;
 
-            Console.Write(System.IO.Directory.GetCurrentDirectory() + " > ");
+            //Console.Write(System.IO.Directory.GetCurrentDirectory() + " > ");
         }
         public void Exit()
         {
