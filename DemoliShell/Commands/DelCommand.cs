@@ -30,9 +30,11 @@ namespace DemoliShell.Commands
             CommandContext.OutputWriter.WriteLine("Do you really want to delete this file? y (yes), n (no)");
 
             userInput = Console.ReadLine();
+            string file;
 
             if(userInput != null && userInput.ToLower() == "y") {
-                File.Delete("Pfad_zur_Datei"); // Ersetzen!!
+                file = CommandContext.Parameters[1];
+                File.Delete(file); // Ersetzen!!
                 CommandContext.OutputWriter.WriteLine("File successfully deleted.");
             } 
             else
