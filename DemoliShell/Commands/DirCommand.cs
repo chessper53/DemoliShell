@@ -24,12 +24,37 @@ namespace DemoliShell.Commands
 
         public void Execute()
         {
+            long fullDirSize = 0;
+            long fullFileSize = 0;
+            int DirCounter = 0;
+            int FileCounter = 0;
+
+            CommandContext.OutputWriter.WriteLine("Volume in " + CommandContext.ShellWorkspace.Drive.Name + " is " + CommandContext.ShellWorkspace.Drive.Label);
+            CommandContext.OutputWriter.WriteLine("Type: " + CommandContext.ShellWorkspace.Drive.DriveType);
+            CommandContext.OutputWriter.WriteLine("\nDirectory of " + CommandContext.ShellWorkspace.CurrentDirectory.Name + "\n");
+
             foreach (Filesystem.FilesystemItem item in CommandContext.ShellWorkspace.CurrentDirectory.FilesystemItems)
             {
-            string itemType = item.GetType() == typeof(Filesystem.Directory) ? "<dir>" : "";
-            string formattedOutput = $"{item.Name,-30} {itemType,-10} {item.CreatedOn,-20}";
-            CommandContext.OutputWriter.WriteLine(formattedOutput);
+                string itemType = item.GetType() == typeof(Filesystem.Directory) ? "<dir>" : item.Size.ToString();
+                string formattedOutput = $"{item.CreatedOn,-30} {itemType,-10} {item.Name,-20}";
+                CommandContext.OutputWriter.WriteLine(formattedOutput);
+
+                if (item is Filesystem.Directory)
+                {
+                    fullDirSize += item.Size;
+                    DirCounter ++;
+                }
+                else
+                {
+                    fullFileSize += item.Size;
+                    FileCounter++;
+                }
             }
+            string fileOutput = $"{FileCounter +" File(s) ",45} {fullFileSize + " bytes used",10}";
+            string dirOutput = $"{DirCounter + " Dir(s) ",45} {fullDirSize + " bytes used",10}";
+
+            CommandContext.OutputWriter.WriteLine(fileOutput);
+            CommandContext.OutputWriter.WriteLine(dirOutput);
         }
     }
 }

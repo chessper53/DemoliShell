@@ -2,6 +2,7 @@
 using System;
 using DemoliShell.Interfaces;
 using File = DemoliShell.Filesystem.File;
+using System.Text;
 
 namespace DemoliShell.Commands
 {
@@ -46,9 +47,11 @@ namespace DemoliShell.Commands
             File newFile = new File();
             newFile.Name = fileName;
             newFile.CreatedOn = DateTime.Now;
-            newFile.ParentDirectory = CommandContext.CurrentDirectory;
+            newFile.ParentDirectory = CommandContext.ShellWorkspace.CurrentDirectory;
             newFile.FileContent = fileContent;
             newFile.Extension = "txt";
+            newFile.Size = GetFileSize(newFile);
+            UpdateParentDirectoriesSize(newFile);
             AddFilesystemItem(newFile);
             CommandContext.OutputWriter.WriteLine("File '" + fileName + "' erstellt.");
         }
@@ -64,6 +67,30 @@ namespace DemoliShell.Commands
             string fileName = CommandContext.Parameters[0];
             string fileContent = CommandContext.Parameters[1];
             MakeFile(fileName, fileContent);
+        }
+        public long GetFileSize(File file)
+        {
+            string contentString = file.FileContent;
+            Encoding encoding = Encoding.UTF8;
+            byte[] bytes = encoding.GetBytes(contentString);
+            long sizeInBytes = bytes.Length;
+            return sizeInBytes;
+        }
+        public void UpdateParentDirectoriesSize(File newFile)
+        {
+            long fileSize = newFile.Size;
+
+            Filesystem.Directory parentDirectory = newFile.ParentDirectory;
+
+            parentDirectory.Size += fileSize;
+
+            Filesystem.Directory currentDirectory = parentDirectory;
+            while (currentDirectory.ParentDirectory != null)
+            {
+                currentDirectory = currentDirectory.ParentDirectory;
+                currentDirectory.Size += fileSize;
+            }
+            CommandContext.ShellWorkspace.Drive.Size += fileSize;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace DemoliShell.Filesystem
         public Directory RootDirectory { get; set; }
         public string Name { get; set; }
         public string Label { get; set; }
-        public double Size { get; set; }
+        public long Size { get; set; }
         public string FilesystemType { get; set; }
         public string DriveType { get; set; }
 
