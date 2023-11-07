@@ -24,8 +24,29 @@ namespace DemoliShell.Commands
 
         public void Execute()
         {
-            //CommandContext.OutputWriter.WriteLine(CommandContext.ShellWorkspace.GetFullPath());
-            //throw new NotImplementedException();
+            string[] commandParts = CommandContext.Command.Split(' ');
+            if (commandParts.Length != 2 || !commandParts[1].ToLower().EndsWith(".txt"))
+            {
+                CommandContext.OutputWriter.WriteLine("Fehler: Ungültige Eingabe. Bitte geben Sie einen gültigen .txt-Dateipfad an.");
+                return;
+            }
+
+            string filePath = commandParts[1];
+            if (!File.Exists(filePath))
+            {
+                CommandContext.OutputWriter.WriteLine($"Fehler: Die Datei '{filePath}' existiert nicht.");
+                return;
+            }
+
+            try
+            {
+                string fileContent = File.ReadAllText(filePath);
+                CommandContext.OutputWriter.WriteLine(fileContent);
+            }
+            catch (Exception ex)
+            {
+                CommandContext.OutputWriter.WriteLine($"Fehler: Beim Lesen der Datei ist ein Fehler aufgetreten - {ex.Message}");
+            }
         }
     }
 }
