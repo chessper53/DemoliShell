@@ -26,7 +26,7 @@ namespace DemoliShell.Commands
         {
             foreach (Filesystem.Directory item in CommandContext.ShellWorkspace.CurrentDirectory.FilesystemItems)
             {
-                CommandContext.OutputWriter.WriteLine(item.Name);
+                CommandContext.OutputWriter.WriteLine(item.Name + " | " + item.CreatedOn.ToString());
             }
         }
     }
