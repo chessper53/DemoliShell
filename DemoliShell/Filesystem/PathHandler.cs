@@ -92,7 +92,6 @@ namespace DemoliShell.Filesystem
                     }
                 }
             }
-
             return resultDir;
         }
     }
