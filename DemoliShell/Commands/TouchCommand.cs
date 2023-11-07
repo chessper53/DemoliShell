@@ -47,10 +47,15 @@ namespace DemoliShell.Commands
             newFile.Name = fileName;
             newFile.CreatedOn = DateTime.Now;
             newFile.ParentDirectory = CommandContext.CurrentDirectory;
-            newFile.FileContent = fileContent;
+
+
+            CommandContext.Parameters.RemoveAt(0);
+            newFile.FileContent = String.Join(" ", CommandContext.Parameters);
+            newFile.FileContent = newFile.FileContent.Replace("\\n", Environment.NewLine);
             newFile.Extension = "txt";
             AddFilesystemItem(newFile);
             CommandContext.OutputWriter.WriteLine("File '" + fileName + "' erstellt.");
+
         }
 
         public void Execute()
