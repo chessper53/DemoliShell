@@ -9,10 +9,13 @@ namespace DemoliShell.Filesystem
     internal class File : FilesystemItem
     {
         public string FileContent { get; set; }
+        public string Extension { get; set; }
         public File() { }
         public File(Directory parentDirectory)
         {
             ParentDirectory = parentDirectory;
         }
+        public File Clone() { return (File)this.MemberwiseClone(); }
+
     }
 }
