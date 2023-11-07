@@ -13,9 +13,11 @@ namespace DemoliShell.Persistency
     internal class PersistencyService
     {
         public const string Filename = "Filesystem.json";
-        public static JsonSerializerSettings settings = new JsonSerializerSettings() { 
+        public static JsonSerializerSettings settings = new JsonSerializerSettings() {
             Formatting = Formatting.Indented,
             TypeNameHandling = TypeNameHandling.All,
+            ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
+            PreserveReferencesHandling = PreserveReferencesHandling.Objects
         };
 
         public PersistencyService() { }
