@@ -26,15 +26,9 @@ namespace DemoliShell.Commands
         {
             foreach (Filesystem.FilesystemItem item in CommandContext.ShellWorkspace.CurrentDirectory.FilesystemItems)
             {
-
-                if(item.GetType() == typeof(Filesystem.Directory))
-                {
-                    CommandContext.OutputWriter.WriteLine(item.Name + "           " + "<dir>" + "           " + item.CreatedOn);
-                }
-                else if (item.GetType() == typeof(Filesystem.File))
-                {
-                    CommandContext.OutputWriter.WriteLine(item.Name + "                           " + item.CreatedOn);
-                }
+            string itemType = item.GetType() == typeof(Filesystem.Directory) ? "<dir>" : "";
+            string formattedOutput = $"{item.Name,-30} {itemType,-10} {item.CreatedOn,-20}";
+            CommandContext.OutputWriter.WriteLine(formattedOutput);
             }
         }
     }
