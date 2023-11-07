@@ -33,10 +33,10 @@ namespace DemoliShell.Persistency
             {
                 DriveInfo[] drives = DriveInfo.GetDrives();
                 DriveInfo winDrive = drives[0];
-                Filesystem.Directory rootDir = new Filesystem.Directory(new List<FilesystemItem>(), "\\", DateTime.Now);
+                Filesystem.Directory rootDir = new Filesystem.Directory(new List<FilesystemItem>(), "", DateTime.Now);
 
                 // Dynamic Entity Management Operations for Large Integrated Storage Harnessing Efficiency and Resilience
-                return new Drive(rootDir, "C:" ,winDrive.VolumeLabel, "Demolisher", winDrive.DriveType.ToString());
+                return new Drive(rootDir, "Windows" , "C", "DEMOLI", winDrive.DriveType.ToString());
             }
 
             return null;
