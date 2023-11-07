@@ -62,15 +62,13 @@ namespace DemoliShell.Commands
 
         public void Execute()
         {
-            if (CommandContext.Parameters.Count < 2)
+            if (CommandContext.Parameters != null && CommandContext.Parameters.Count > 0)
             {
-                CommandContext.OutputWriter.WriteLine("Usage: Touch <FileName> <FileContent>");
-                return;
+                string fileName = CommandContext.Parameters[0];
+                string fileContent = CommandContext.Parameters[1];
+                MakeFile(fileName, fileContent);
             }
-
-            string fileName = CommandContext.Parameters[0];
-            string fileContent = CommandContext.Parameters[1];
-            MakeFile(fileName, fileContent);
+            else { CommandContext.OutputWriter.WriteLine("Parameters are null or empty."); }
         }
         public long GetFileSize(File file)
         {

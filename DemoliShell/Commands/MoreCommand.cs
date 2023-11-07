@@ -21,61 +21,58 @@ namespace DemoliShell.Commands
 
         public void Execute()
         {
-            if (CommandContext.Parameters.Count != 1)
+            if (CommandContext.Parameters != null && CommandContext.Parameters.Count > 0)
             {
-                CommandContext.OutputWriter.WriteLine("Usage: More <FileName>");
-                return;
-            }
+                string fileName = CommandContext.Parameters[0];
+                Filesystem.File fileToDisplay = null;
 
-            string fileName = CommandContext.Parameters[0];
-            Filesystem.File fileToDisplay = null;
-
-            // Find the file with the given name
-            foreach (FilesystemItem item in CommandContext.ShellWorkspace.CurrentDirectory.FilesystemItems)
-            {
-                if (item.Name == fileName && item is Filesystem.File)
+                // Find the file with the given name
+                foreach (FilesystemItem item in CommandContext.ShellWorkspace.CurrentDirectory.FilesystemItems)
                 {
-                    fileToDisplay = (Filesystem.File)item;
-                    break;
-                }
-            }
-
-            if (fileToDisplay != null)
-            {
-                // Display the content of the file with pausing for user interaction
-                CommandContext.OutputWriter.WriteLine($"File Content for '{fileName}':");
-
-                int windowWidth = Console.WindowWidth;
-                int windowHeight = Console.WindowHeight;
-                int currentIndex = 0;
-
-                while (currentIndex < fileToDisplay.FileContent.Length)
-                {
-                    int remainingCharacters = fileToDisplay.FileContent.Length - currentIndex;
-                    int chunkSize =  windowHeight; 
-
-                    string outputChunk = fileToDisplay.FileContent.Substring(currentIndex, chunkSize);
-                    currentIndex += chunkSize;
-
-                    // Ausgabe des aktuellen Chunks
-                    CommandContext.OutputWriter.Write(outputChunk);
-
-                    // Überprüfen, ob der Bildschirm voll ist
-                    if (currentIndex < fileToDisplay.FileContent.Length)
+                    if (item.Name == fileName && item is Filesystem.File)
                     {
-                        CommandContext.OutputWriter.WriteLine("... (Drücken Sie Leerschlag für mehr)");
-                        char key = Console.ReadKey().KeyChar;
-                        if (key != ' ')
+                        fileToDisplay = (Filesystem.File)item;
+                        break;
+                    }
+                }
+
+                if (fileToDisplay != null)
+                {
+                    // Display the content of the file with pausing for user interaction
+                    CommandContext.OutputWriter.WriteLine($"File Content for '{fileName}':");
+
+                    int chunkSize = 50; // Anzahl Zeichen pro Ausgabe-Chunk
+                    int currentIndex = 0;
+
+                    while (currentIndex < fileToDisplay.FileContent.Length)
+                    {
+                        int remainingCharacters = fileToDisplay.FileContent.Length - currentIndex;
+                        int charactersToOutput = Math.Min(chunkSize, remainingCharacters);
+
+                        string outputChunk = fileToDisplay.FileContent.Substring(currentIndex, charactersToOutput);
+                        currentIndex += charactersToOutput;
+
+                        // Ausgabe des aktuellen Chunks
+                        CommandContext.OutputWriter.WriteLine(outputChunk);
+
+                        // Überprüfen, ob der Bildschirm voll ist
+                        if (currentIndex < fileToDisplay.FileContent.Length)
                         {
-                            break;
+                            CommandContext.OutputWriter.WriteLine("... (Drücken Sie Leerschlag für mehr)");
+                            char key = Console.ReadKey().KeyChar;
+                            if (key != ' ')
+                            {
+                                break;
+                            }
                         }
                     }
                 }
+                else
+                {
+                    CommandContext.OutputWriter.WriteLine($"File '{fileName}' not found.");
+                }
             }
-            else
-            {
-                CommandContext.OutputWriter.WriteLine($"File '{fileName}' not found.");
-            }
+            else { CommandContext.OutputWriter.WriteLine("Parameters are null or empty."); }
         }
     }
 }
