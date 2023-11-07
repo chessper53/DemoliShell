@@ -26,7 +26,6 @@ namespace DemoliShell.Commands
         {
             foreach (Filesystem.FilesystemItem item in CommandContext.ShellWorkspace.CurrentDirectory.FilesystemItems)
             {
-                ;
 
                 if(item.GetType() == typeof(Filesystem.Directory))
                 {
