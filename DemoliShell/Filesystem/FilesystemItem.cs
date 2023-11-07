@@ -9,7 +9,7 @@ namespace DemoliShell.Filesystem
     public abstract class FilesystemItem
     {
         public string Name { get; set; }
-        public double Size { get; set; }
+        public long Size { get; set; }
         public DateTime CreatedOn { get; set; }
         public Directory ParentDirectory { get; set; }
     }
