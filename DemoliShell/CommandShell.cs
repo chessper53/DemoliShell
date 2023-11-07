@@ -22,30 +22,6 @@ namespace DemoliShell
             commandParser = new CommandParser();
             commandInvoker = new CommandInvoker();
             shellWorkspace = new ShellWorkspace();
-
-            //DEBUG
-            Filesystem.Directory dir = new Filesystem.Directory();
-            dir.ParentDirectory = shellWorkspace.CurrentDirectory;
-            dir.Name = "eat";
-
-            Filesystem.Directory dir2 = new Filesystem.Directory();
-            dir2.ParentDirectory = dir;
-            dir2.Name = "eat2";
-            dir.FilesystemItems.Add(dir2);
-
-            Filesystem.File file = new Filesystem.File();
-            file.ParentDirectory = dir;
-            file.Name = "file";
-            dir.FilesystemItems.Add(file);
-
-            Filesystem.Directory dir3 = new Filesystem.Directory();
-            dir3.ParentDirectory = dir;
-            dir3.Name = "eat3";
-            dir.FilesystemItems.Add(dir3);
-            shellWorkspace.CurrentDirectory.FilesystemItems.Add(dir);
-
-
-
         }
 
         public void Run()
@@ -56,6 +32,7 @@ namespace DemoliShell
                 showInterface();
                 string userInput = Console.ReadLine();
                 ProcessInput(userInput);
+                PersistencyService.Save(shellWorkspace.Drive);
             } while (true);
 
         }
