@@ -23,5 +23,7 @@ namespace DemoliShell.Filesystem
             CreatedOn = createdOn;
         }
 
+        public Directory Clone() { return (Directory)this.MemberwiseClone(); }
+
     }
 }
