@@ -25,8 +25,6 @@ namespace DemoliShell.Commands
 
         public void Execute()
         {
-            
-
             if (CommandContext.Parameters.Count != 2)
             {
                 CommandContext.OutputWriter.WriteLine("Usage: Ren <oldName> <newName>");
@@ -36,6 +34,8 @@ namespace DemoliShell.Commands
             string oldName;
             string newName;
 
+            bool changed = false;
+
             oldName = CommandContext.Parameters[0];
             newName = CommandContext.Parameters[1];
 
@@ -43,30 +43,34 @@ namespace DemoliShell.Commands
             {
                 if (item.Name.Equals(oldName))
                 {
-                    int index = 1;
                     string newFullName = newName;
 
                     // If the new name already exists, append an index number
+                    int index = 1;
                     while (CommandContext.ShellWorkspace.CurrentDirectory.FilesystemItems.Any(x => x.Name.Equals(newFullName)))
                     {
+                        newFullName = newName + "_" + index;
                         index++;
                     }
 
                     try
                     {
                         // Rename the file or folder to the new name
-                        item.Name = newFullName + "_" + index; // Aktualisieren Sie den Namen im Verzeichnis
+                        item.Name = newFullName; // Aktualisieren Sie den Namen im Verzeichnis
                         CommandContext.OutputWriter.WriteLine($"Renamed to {newFullName}");
+                        changed = true;
+                        break;
                     }
                     catch (Exception ex)
                     {
                         CommandContext.OutputWriter.WriteLine($"Error renaming: {ex.Message}");
                     }
                 }
-                else
-                {
-                    CommandContext.OutputWriter.WriteLine("File or folder " + oldName + " does not exist.");
-                }
+            }
+
+            if (!changed)
+            {
+                CommandContext.OutputWriter.WriteLine("File or folder " + oldName + " does not exist.");
             }
         }
     }
