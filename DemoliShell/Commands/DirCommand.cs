@@ -24,9 +24,18 @@ namespace DemoliShell.Commands
 
         public void Execute()
         {
-            foreach (Filesystem.Directory item in CommandContext.ShellWorkspace.CurrentDirectory.FilesystemItems)
+            foreach (Filesystem.FilesystemItem item in CommandContext.ShellWorkspace.CurrentDirectory.FilesystemItems)
             {
-                CommandContext.OutputWriter.WriteLine(item.Name);
+                ;
+
+                if(item.GetType() == typeof(Filesystem.Directory))
+                {
+                    CommandContext.OutputWriter.WriteLine(item.Name + "           " + "<dir>" + "           " + item.CreatedOn);
+                }
+                else if (item.GetType() == typeof(Filesystem.File))
+                {
+                    CommandContext.OutputWriter.WriteLine(item.Name + "                           " + item.CreatedOn);
+                }
             }
         }
     }

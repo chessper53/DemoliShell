@@ -47,6 +47,7 @@ namespace DemoliShell.Commands
             // Das Verzeichnis erstellen
             Filesystem.Directory newDirectory = new Filesystem.Directory();
             newDirectory.Name = directoryName;
+            newDirectory.CreatedOn= DateTime.Now;
             newDirectory.ParentDirectory = CommandContext.ShellWorkspace.CurrentDirectory;
             AddFilesystemItem(newDirectory);
             CommandContext.OutputWriter.WriteLine("Verzeichnis '" + directoryName + "' erstellt.");
