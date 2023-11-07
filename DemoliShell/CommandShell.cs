@@ -33,11 +33,17 @@ namespace DemoliShell
             dir2.Name = "eat2";
             dir.FilesystemItems.Add(dir2);
 
+            Filesystem.File file = new Filesystem.File();
+            file.ParentDirectory = dir;
+            file.Name = "file";
+            dir.FilesystemItems.Add(file);
+
             Filesystem.Directory dir3 = new Filesystem.Directory();
             dir3.ParentDirectory = dir;
             dir3.Name = "eat3";
             dir.FilesystemItems.Add(dir3);
             shellWorkspace.CurrentDirectory.FilesystemItems.Add(dir);
+
 
 
         }

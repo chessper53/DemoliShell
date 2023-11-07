@@ -12,6 +12,7 @@ namespace DemoliShell
         public List<string> Parameters { get; set; }
         public ICommandOutputWriter OutputWriter { get; set; }
         public ShellWorkspace ShellWorkspace { get; set; }
+        public Filesystem.Directory CurrentDirectory { get; set; }
 
         public CommandContext()
         {
